@@ -3,10 +3,11 @@ applications:
   path: ./applications/allocations-server/build/libs/allocations-server.jar
   routes:
   - route: allocations-pal-tracker-distributed-mm.cfapps.io
-  memory: 1G
+  memory: 512M
+  disk_quota: 512M
   instances: 1
   env:
     REGISTRATION_SERVER_ENDPOINT: http://registration-pal-tracker-distributed-mm.cfapps.io
-    JBP_CONFIG_OPEN_JDK_JRE: '{ jre: { version: 11.+ } }'
+    JBP_CONFIG_OPEN_JDK_JRE: '{ jre: { version: 11.+ }, memory_calculator: { stack_threads: 25 } }'
   services:
   - tracker-allocations-database
